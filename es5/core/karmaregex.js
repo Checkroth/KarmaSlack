@@ -15,38 +15,45 @@ var KarmaRegex = (function () {
 
 	_createClass(KarmaRegex, [{
 		key: "helpPattern",
-		get: function () {
-			return /(\?)/;
+		get: function get() {
+			return (/(\?)/
+			);
 		}
 	}, {
 		key: "initPattern",
-		get: function () {
-			return /((init \{)([\s\S]*)(\}))/;
+		get: function get() {
+			return (/((init \{)([\s\S]*)(\}))/
+			);
 		}
 	}, {
 		key: "userIdPattern",
-		get: function () {
-			return /<@(.*?)>/;
+		get: function get() {
+			return (/<@(.*?)>/
+			);
 		}
 	}, {
 		key: "userIdSinglePattern",
-		get: function () {
-			return /^<@(.*?)>$/;
+		get: function get() {
+			return (/^<@(.*?)>$/
+			);
 		}
 	}, {
 		key: "teamIdPattern",
-		get: function () {
-			return /<!everyone>/;
+		get: function get() {
+			return (/<!everyone>/
+			);
 		}
 	}, {
 		key: "posPattern",
-		get: function () {
-			return /((<@)(.*)(> ?)(\+\+))/;
+		get: function get() {
+			return (/((<@)(.*)(> ?)(\+\+))/
+			);
 		}
 	}, {
 		key: "negPattern",
-		get: function () {
-			return /((<@)(.*)(> ?)(\-\-))/;
+		get: function get() {
+			return (/((<@)(.*)(> ?)(\-\-))/
+			);
 		}
 	}]);
 
@@ -55,4 +62,4 @@ var KarmaRegex = (function () {
 
 exports["default"] = new KarmaRegex();
 module.exports = exports["default"];
-//# sourceMappingURL=../core/karmaregex.js.map
+//# sourceMappingURL=karmaregex.js.map

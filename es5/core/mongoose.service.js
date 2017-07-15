@@ -43,4 +43,4 @@ var MongooseService = (function () {
 exports['default'] = MongooseService;
 ;
 module.exports = exports['default'];
-//# sourceMappingURL=../core/mongoose.service.js.map
+//# sourceMappingURL=mongoose.service.js.map

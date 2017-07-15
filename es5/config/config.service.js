@@ -46,4 +46,4 @@ var ConfigService = (function () {
 
 exports['default'] = ConfigService;
 module.exports = exports['default'];
-//# sourceMappingURL=../config/config.service.js.map
+//# sourceMappingURL=config.service.js.map

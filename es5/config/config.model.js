@@ -55,4 +55,4 @@ configSchema.plugin(_mongooseClassWrapper2['default'], ConfigModel);
 
 exports['default'] = _mongoose2['default'].model('Config', configSchema);
 module.exports = exports['default'];
-//# sourceMappingURL=../config/config.model.js.map
+//# sourceMappingURL=config.model.js.map

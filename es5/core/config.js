@@ -17,22 +17,23 @@ var Config = (function () {
 		this._mongodbName = process.env.MONGODB_NAME || 'karmatest';
 		this._mongodbUsername = process.env.MONGODB_USERNAME || 'trunk';
 		this._mongodbPassword = process.env.MONGODB_PASSWORD || 'trunk';
-		this._mongodbEndpoint = process.env.MONGODB_ENDPOINT || 'localhost'
+		this._mongodbEndpoint = process.env.MONGODB_ENDPOINT || 'localhost';
+		this._mongodbPort = process.env.MONGODB_PORT || '25762';
 	}
 
 	_createClass(Config, [{
 		key: 'db',
-		get: function () {
-			return this.productionEnv ? 'mongodb://' + this._mongodbUsername + ':' + this._mongodbPassword + '@' + this._mongodbEndpoint + '/' + this._mongodbName : 'mongodb://localhost/karma';
+		get: function get() {
+			return this.productionEnv ? 'mongodb://' + this._mongodbUsername + ':' + this._mongodbPassword + '@' + this._mongodbEndpoint + ':' + this.__mongodbPort + '/' + this._mongodbName : 'mongodb://localhost/karma';
 		}
 	}, {
 		key: 'port',
-		get: function () {
+		get: function get() {
 			return this.productionEnv ? this._port : '3000';
 		}
 	}, {
 		key: 'productionEnv',
-		get: function () {
+		get: function get() {
 			return this._env === 'production';
 		}
 	}]);
@@ -42,4 +43,4 @@ var Config = (function () {
 
 exports['default'] = Config;
 module.exports = exports['default'];
-//# sourceMappingURL=../core/config.js.map
+//# sourceMappingURL=config.js.map

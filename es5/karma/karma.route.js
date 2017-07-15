@@ -105,15 +105,15 @@ var KarmaRoute = (function () {
 	}, {
 		key: '_helpCommand',
 		value: function _helpCommand(slackData, res) {
-			var slackResponse = 'How to use karma:';
+			var slackResponse = "How to use karma:";
 			slackResponse += '\n Positive karma = ' + slackData.triggerWord + ': @user ++';
 			slackResponse += '\n Negative karma = ' + slackData.triggerWord + ': @user --';
 			slackResponse += '\n User karma = ' + slackData.triggerWord + ': @user';
 			slackResponse += '\n Team karma = ' + slackData.triggerWord + ': @everyone';
 			slackResponse += '\n Setup karma = ' + slackData.triggerWord + ': init {';
-			slackResponse += '\n  "incomingWebhookUrl": "https://hooks.slack.com/services/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",';
-			slackResponse += '\n  "outgoingToken": "25LnEy4vXHEi88Plrpvg6htP"';
-			slackResponse += '\n }';
+			slackResponse += "\n  \"incomingWebhookUrl\": \"https://hooks.slack.com/services/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\",";
+			slackResponse += "\n  \"outgoingToken\": \"25LnEy4vXHEi88Plrpvg6htP\"";
+			slackResponse += "\n }";
 			this._slackService.sendResponse(slackData, slackResponse, res);
 		}
 	}, {
@@ -121,7 +121,7 @@ var KarmaRoute = (function () {
 		value: function _initCommand(slackData, res) {
 			var _this2 = this;
 
-			var configJsonString = slackData.text.replace('init', '').trim();
+			var configJsonString = slackData.text.replace("init", '').trim();
 
 			this._slackService.parseJson(configJsonString).then(function (data) {
 
@@ -219,4 +219,4 @@ var KarmaRoute = (function () {
 exports['default'] = KarmaRoute;
 ;
 module.exports = exports['default'];
-//# sourceMappingURL=../karma/karma.route.js.map
+//# sourceMappingURL=karma.route.js.map

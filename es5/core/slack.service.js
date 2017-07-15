@@ -22,11 +22,10 @@ var SlackService = (function () {
 		this._config = config;
 	}
 
+	//Parse json data
+
 	_createClass(SlackService, [{
 		key: 'parseJson',
-
-		//Parse json data
-
 		value: function parseJson(str) {
 
 			return new Promise(function (res, rej) {
@@ -39,11 +38,11 @@ var SlackService = (function () {
 				}
 			});
 		}
-	}, {
-		key: 'authenticate',
 
 		//Authenticate request
 
+	}, {
+		key: 'authenticate',
 		value: function authenticate(teamId, token) {
 			var _this = this;
 
@@ -52,11 +51,11 @@ var SlackService = (function () {
 				_this._configService.getConfig(teamId).then(function (data) {
 
 					if (!data) {
-						rej('No config found.');
+						rej("No config found.");
 					}
 
 					if (token !== data.outgoingToken) {
-						rej('Invalid token.');
+						rej("Invalid token.");
 					}
 
 					res();
@@ -66,11 +65,11 @@ var SlackService = (function () {
 				});
 			});
 		}
-	}, {
-		key: 'sendResponse',
 
 		//Send slack response
 
+	}, {
+		key: 'sendResponse',
 		value: function sendResponse(slackData, message, res) {
 			var _this2 = this;
 
@@ -93,8 +92,8 @@ var SlackService = (function () {
 
 							slackRes.webhook({
 
-								channel: '#' + slackData.channelName,
-								username: 'karmabot',
+								channel: "#" + slackData.channelName,
+								username: "karmabot",
 								text: message
 							}, function (err, response) {
 
@@ -115,4 +114,4 @@ var SlackService = (function () {
 
 exports['default'] = SlackService;
 module.exports = exports['default'];
-//# sourceMappingURL=../core/slack.service.js.map
+//# sourceMappingURL=slack.service.js.map

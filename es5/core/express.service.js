@@ -39,7 +39,7 @@ var ExpressService = (function () {
 		}
 	}, {
 		key: 'app',
-		get: function () {
+		get: function get() {
 			return this._app;
 		}
 	}]);
@@ -50,4 +50,4 @@ var ExpressService = (function () {
 exports['default'] = ExpressService;
 ;
 module.exports = exports['default'];
-//# sourceMappingURL=../core/express.service.js.map
+//# sourceMappingURL=express.service.js.map

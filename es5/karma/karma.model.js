@@ -50,8 +50,8 @@ var KarmaModel = (function () {
 						count: { $sum: 1 }
 					}
 				}, {
-					'$sort': {
-						'count': -1
+					"$sort": {
+						"count": -1
 					}
 				}], function (err, collection) {
 					res(collection);
@@ -72,4 +72,4 @@ karmaSchema.plugin(_mongooseClassWrapper2['default'], KarmaModel);
 
 exports['default'] = _mongoose2['default'].model('Karma', karmaSchema);
 module.exports = exports['default'];
-//# sourceMappingURL=../karma/karma.model.js.map
+//# sourceMappingURL=karma.model.js.map

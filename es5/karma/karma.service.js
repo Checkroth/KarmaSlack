@@ -10,7 +10,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _karmaModelJs = require("./karma.model.js");
+var _karmaModelJs = require('./karma.model.js');
 
 var _karmaModelJs2 = _interopRequireDefault(_karmaModelJs);
 
@@ -19,11 +19,10 @@ var KarmaService = (function () {
 		_classCallCheck(this, KarmaService);
 	}
 
+	//Add Karma record
+
 	_createClass(KarmaService, [{
 		key: "add",
-
-		//Add Karma record
-
 		value: function add(teamId, userId, fromUserId) {
 			var _this = this;
 
@@ -44,11 +43,11 @@ var KarmaService = (function () {
 				});
 			});
 		}
-	}, {
-		key: "remove",
 
 		//Remove Karma record
 
+	}, {
+		key: "remove",
 		value: function remove(teamId, userId, fromUserId) {
 			var _this2 = this;
 
@@ -84,11 +83,11 @@ var KarmaService = (function () {
 				return Promise.resolve("Don't be so hard on yourself.");
 			};
 		}
-	}, {
-		key: "userCount",
 
 		//Get Karma count for user
 
+	}, {
+		key: "userCount",
 		value: function userCount(teamId, userId, incDec) {
 
 			return new Promise(function (res, rej) {
@@ -105,25 +104,25 @@ var KarmaService = (function () {
 				});
 			});
 		}
-	}, {
-		key: "teamCount",
 
 		//Get Karma count for team
 
+	}, {
+		key: "teamCount",
 		value: function teamCount(teamId) {
 
 			return new Promise(function (res, rej) {
 				_karmaModelJs2["default"].getTeamPoints(teamId).then(function (collection) {
 
-					var responseText = "Karma Totals: \n";
+					var responseText = 'Karma Totals: \n';
 
 					for (var user = 0, len = collection.length; user < len; user++) {
 						var element = collection[user];
-						responseText += "" + (user + 1) + ". <@" + element._id + "> has a karma of " + element.count + ". \n";
+						responseText += user + 1 + ". <@" + element._id + "> has a karma of " + element.count + ". \n";
 					}
 					res(responseText);
 				})["catch"](function () {
-					rej("Error retrieving karma for team.");
+					rej('Error retrieving karma for team.');
 				});
 			});
 		}
@@ -134,4 +133,4 @@ var KarmaService = (function () {
 
 exports["default"] = KarmaService;
 module.exports = exports["default"];
-//# sourceMappingURL=../karma/karma.service.js.map
+//# sourceMappingURL=karma.service.js.map
