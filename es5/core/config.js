@@ -18,13 +18,13 @@ var Config = (function () {
 		this._mongodbUsername = process.env.MONGODB_USERNAME || 'trunk';
 		this._mongodbPassword = process.env.MONGODB_PASSWORD || 'trunk';
 		this._mongodbEndpoint = process.env.MONGODB_ENDPOINT || 'localhost';
-		this._mongodbPort = process.env.MONGODB_PORT || '25762';
+		this._mongodbPort = '25762';
 	}
 
 	_createClass(Config, [{
 		key: 'db',
 		get: function get() {
-			return this.productionEnv ? 'mongodb://' + this._mongodbUsername + ':' + this._mongodbPassword + '@' + this._mongodbEndpoint + ':' + this.__mongodbPort + '/' + this._mongodbName : 'mongodb://localhost/karma';
+			return this.productionEnv ? 'mongodb://' + this._mongodbUsername + ':' + this._mongodbPassword + '@' + this._mongodbEndpoint + ':25762/' + this._mongodbName : 'mongodb://localhost/karma';
 		}
 	}, {
 		key: 'port',
