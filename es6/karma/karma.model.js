@@ -1,17 +1,37 @@
 import Mongoose from 'mongoose';
 import LoadClass from 'mongoose-class-wrapper';
 
-var karmaSchema = Mongoose.Schema({
+var karmaSchema = Schema({
 	teamId: String,
 	userId: String,	
-	fromUserId: String,
-	created: {type: Date, default: Date.now}
+	karmaPoints: Number
 });
 
 class KarmaModel {
 
+	static addOrCreate(teamId, userId, amnt){
+		return this.findOne( { teamId, userId}, function(err, user) {
+			if(err) {
+				this.user = KarmaModel.create({
+					"teamId": teamId,
+					"userId": userId,
+					"karmaPoints": amnt
+				});
+			}
+			else {
+				user.karmaPoints = user.karmaPoints + amnt
+				user.save(function (err) {
+				if(err) {
+					console.error(`Couldn't update karma for ${userId}`)
+				}
+			});
+			}
+		}) {
+
+		}
+	} 
 	static getUserPoints(teamId, userId){
-		return this.find({ teamId, userId });
+		return this.findOne({ teamId, userId });
 	}
 	
 	static getTeamPoints(teamId){
@@ -24,7 +44,7 @@ class KarmaModel {
 				},{
 				    $group : {
 						_id: '$userId',
-						count: { $sum: 1 }
+						count: '$karmaPoints'
 				    }
 				},
 				{ 
@@ -40,9 +60,15 @@ class KarmaModel {
 		});
 	}
 	
-	static deleteLatestPoint(teamId, userId, fromUserId){
-		return this.findOneAndRemove({ teamId, userId, fromUserId }, 
-		{sort: {created: 'asc'}});
+	static removePoints(teamId, userId, amnt){
+		return this.findOne({ teamId, userId}, function(err, user) {
+			user.karmaPoints = user.karmaPoints + amnt;
+			user.save(function (err) {
+				if(err) {
+					console.error(`Couldn't update karma for ${userId}`)
+				}
+			});
+		});
 	}
 }
 

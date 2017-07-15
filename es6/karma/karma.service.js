@@ -8,15 +8,11 @@ export default class KarmaService {
 	
 	//Add Karma record
 	
-	add(teamId, userId, fromUserId){		
+	add(teamId, userId, amount){		
 		
 		return new Promise((res,rej) =>{
 			
-			return KarmaModel.create({
-				"teamId": teamId,
-				"userId": userId,
-				"fromUserId": fromUserId
-			})
+			return KarmaModel.addOrCreate(teamId, userId, amount)
 			.then(() => {
 				return this.userCount(teamId, userId, "increased")
 						.then((data) => {
@@ -32,7 +28,7 @@ export default class KarmaService {
 	
 	//Remove Karma record
 	
-	remove(teamId, userId, fromUserId){
+	remove(teamId, userId, amount){
 		
 		return new Promise((res,rej) =>{
 			
@@ -41,7 +37,7 @@ export default class KarmaService {
 						.then((data)=> res(data));
 			}
 			
-			return KarmaModel.deleteLatestPoint(teamId, userId, fromUserId)	
+			return KarmaModel.removePoints(teamId, userId, amount)	
 			.then((entity) => {
 				if(!entity){
 					return whenNoRecordFound(userId)
@@ -71,11 +67,11 @@ export default class KarmaService {
   
 		return new Promise((res,rej) =>{
 			KarmaModel.getUserPoints(teamId, userId)
-			.then((collection) => {
-				var responseText = `<@${userId}> has a karma of ${collection.length}.`; 		 
+			.then((user) => {
+				var responseText = `<@${userId}> has a karma of ${user.karmaPoints}.`; 		 
 		
 				if(incDec){
-					responseText = `<@${userId}> has ${incDec} their karma to ${collection.length}.`;
+					responseText = `<@${userId}> has ${incDec} their karma to ${user.karmaPoints}.`;
 				}
 				
 				res(responseText);
