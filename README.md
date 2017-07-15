@@ -3,8 +3,37 @@ Free Karma Bot For Slack
 
 #Intro
 A lightweight karma bot designed to be integrated easily into slack.
+Forked from https://github.com/dbillingham/KarmaSlack
+Altered to be runable via your own heroku/mongo instance.
 
-#Setup
+#Setup - APP SIDE
+
+## Code Setup
+- Fork this repository
+- Run `gulp babel` to generate es5 files (Necessary to run application)
+- Push to master
+
+## MongoDB Setup
+- As long as its accessible and available anything will do
+    + Heroku provides a paid mongodb service
+    + Mlab provides a free mongodb service
+
+## Heroku Setup
+(Assuming you already have a heroku account / configured)
+- `heroku create` in the app directory (Where this Readme is)
+- Set necessary heroku configs with `heroku config:set VAR=VALUE`
+    + `MONGODB_NAME=[your mongo collection you set up]`
+    + `MONGODB_USERNAME=[login username for your mongo instance]`
+    + `MONGODB_PASSWORD=[login password for your mongo instance]`
+    + `MONGODB_ENDPOINT=[url/endpoint for your mongo instance]`
+        * If you used MLab it will look something like:
+          `xx####.mlab.com`
+    - `NODE_ENV=production`
+- `heroku local` to make sure the thing works
+- `git push heroku master` to deploy
+- `heroku logs` to check and see that your app is running and connected to mongodb
+
+#Setup - SLACK SIDE
 
 ##Create new Outgoing WebHook:
 
