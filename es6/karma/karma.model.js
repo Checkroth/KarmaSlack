@@ -1,7 +1,7 @@
 import Mongoose from 'mongoose';
 import LoadClass from 'mongoose-class-wrapper';
 
-var karmaSchema = Schema({
+var karmaSchema = Mongoose.Schema({
 	teamId: String,
 	userId: String,	
 	karmaPoints: Number
@@ -26,9 +26,7 @@ class KarmaModel {
 				}
 			});
 			}
-		}) {
-
-		}
+		});
 	} 
 	static getUserPoints(teamId, userId){
 		return this.findOne({ teamId, userId });
