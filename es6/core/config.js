@@ -6,11 +6,14 @@ export default class Config {
 		this._mongodbName = process.env.MONGODB_NAME || 'karmatest';
 		this._mongodbUsername = process.env.MONGODB_USERNAME || 'trunk';
 		this._mongodbPassword = process.env.MONGODB_PASSWORD || 'trunk';
+		this._mongodbEndpoint = process.env.MONGODB_ENDPOINT || 'localhost'
+		this._mongodbPort = process.env.MONGODB_PORT || '25762'
+
 	}
 	
 	get db(){		
 		return this.productionEnv ?
-			`mongodb://${this._mongodbUsername}:${this._mongodbPassword}@ds063889.mongolab.com:63889/${this._mongodbName}`:
+			`mongodb://${this._mongodbUsername}:${this._mongodbPassword}@${this._mongodbEndpoint}:${this.__mongodbPort}/${this._mongodbName}`:
 			'mongodb://localhost/karma';
 	}
 	
