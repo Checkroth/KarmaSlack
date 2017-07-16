@@ -13,12 +13,12 @@ class KarmaModel {
 		return this.findOne({teamId, userId}, (err, user) => {
 			if (user) {
 				user.karmaPoints = user.karmaPoints + amnt;
-				user.save(function (err) {
+				return user.save(function (err) {
 					console.err(`Couldn't add karma to ${userId}`);
 				});
 			}
 			else {
-				this.create({
+				return this.create({
 					"teamId": teamId,
 					"userId": userId,
 					"karmaPoints": amnt
