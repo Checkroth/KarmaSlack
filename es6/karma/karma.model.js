@@ -10,7 +10,7 @@ var karmaSchema = Mongoose.Schema({
 class KarmaModel {
 
 	static addOrCreate(teamId, userId, amnt){
-		this.findOne({teamId, userId}, (err, user) => {
+		return this.findOne({teamId, userId}, (err, user) => {
 			if (user) {
 				user.karmaPoints = user.karmaPoints + amnt;
 				user.save(function (err) {

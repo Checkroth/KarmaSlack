@@ -34,7 +34,7 @@ var KarmaModel = (function () {
 		value: function addOrCreate(teamId, userId, amnt) {
 			var _this = this;
 
-			this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
+			return this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
 				if (user) {
 					user.karmaPoints = user.karmaPoints + amnt;
 					user.save(function (err) {
