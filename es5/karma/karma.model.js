@@ -33,7 +33,7 @@ var KarmaModel = (function () {
 		key: 'addOrCreate',
 		value: function addOrCreate(teamId, userId, amnt) {
 			return this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
-				if (err) {
+				if (!user) {
 					this.user = KarmaModel.create({
 						"teamId": teamId,
 						"userId": userId,

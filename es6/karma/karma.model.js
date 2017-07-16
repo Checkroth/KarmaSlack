@@ -11,7 +11,7 @@ class KarmaModel {
 
 	static addOrCreate(teamId, userId, amnt){
 		return this.findOne( { teamId, userId}, function(err, user) {
-			if(err) {
+			if(!user) {
 				this.user = KarmaModel.create({
 					"teamId": teamId,
 					"userId": userId,
