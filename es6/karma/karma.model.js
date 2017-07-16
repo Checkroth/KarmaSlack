@@ -13,7 +13,7 @@ class KarmaModel {
 		return this.findOne({teamId, userId}, (err, user) => {
 			if (user) {
 				user.karmaPoints = user.karmaPoints + amnt;
-				return user.save(function (err) {
+				return user.save(function (err, updatedUser) {
 					console.err(`Couldn't add karma to ${userId}`);
 				});
 			}
@@ -23,7 +23,7 @@ class KarmaModel {
 					"userId": userId,
 					"karmaPoints": amnt
 				}, function(err, usr) {
-					if (err) console.err(`Couldn't create user ${userId} with points ${karmaPoints}`)
+					if (err) console.err(`Couldn't create user ${userId} with points ${amnt}`)
 				});
 			}
 		});
