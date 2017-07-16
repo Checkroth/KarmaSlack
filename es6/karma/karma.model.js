@@ -21,7 +21,7 @@ class KarmaModel {
 				this.create({
 					"teamId": teamId,
 					"userId": userId,
-					"karmaPoints": karmaPoints
+					"karmaPoints": amnt
 				}, function(err, usr) {
 					if (err) console.err(`Couldn't create user ${userId} with points ${karmaPoints}`)
 				});
