@@ -18,7 +18,7 @@ class KarmaModel {
 				});
 			}
 			else {
-				self.create({
+				this.create({
 					"teamId": teamId,
 					"userId": userId,
 					"karmaPoints": karmaPoints

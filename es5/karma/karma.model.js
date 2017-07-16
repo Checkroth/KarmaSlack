@@ -32,6 +32,8 @@ var KarmaModel = (function () {
 	_createClass(KarmaModel, null, [{
 		key: 'addOrCreate',
 		value: function addOrCreate(teamId, userId, amnt) {
+			var _this = this;
+
 			this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
 				if (user) {
 					user.karmaPoints = user.karmaPoints + amnt;
@@ -39,7 +41,7 @@ var KarmaModel = (function () {
 						console.err('Couldn\'t add karma to ' + userId);
 					});
 				} else {
-					self.create({
+					_this.create({
 						"teamId": teamId,
 						"userId": userId,
 						"karmaPoints": karmaPoints
@@ -57,11 +59,11 @@ var KarmaModel = (function () {
 	}, {
 		key: 'getTeamPoints',
 		value: function getTeamPoints(teamId) {
-			var _this = this;
+			var _this2 = this;
 
 			return new Promise(function (res, rej) {
 
-				_this.aggregate([{
+				_this2.aggregate([{
 					$match: { teamId: teamId }
 				}, {
 					$group: {
