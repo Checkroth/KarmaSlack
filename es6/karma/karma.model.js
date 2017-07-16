@@ -10,22 +10,21 @@ var karmaSchema = Mongoose.Schema({
 class KarmaModel {
 
 	static addOrCreate(teamId, userId, amnt){
-		this.findOne( { teamId, userId}, function(err, user) {
-			if(!user) {
-				KarmaModel.create({
+		this.findOne({teamId, userId}, (err, user) => {
+			user.karmaPoints = user.karmaPoints + amnt;
+			usr = user.save(function (err) {
+				if (err) console.err("Couldn't add points");
+			});
+			return usr
+				? callback(err, user)
+				: self.create({
 					"teamId": teamId,
 					"userId": userId,
 					"karmaPoints": amnt
+				}, (err, result) => {
+					return callback(err, user)
 				});
-			}
-			else {
-				user.karmaPoints = user.karmaPoints + amnt
-				user.save(function (err) {
-				if(err) {
-					console.error(`Couldn't update karma for ${userId}`)
-				}
-			});
-			}
+
 		});
 	} 
 	static getUserPoints(teamId, userId){

@@ -33,20 +33,17 @@ var KarmaModel = (function () {
 		key: 'addOrCreate',
 		value: function addOrCreate(teamId, userId, amnt) {
 			this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
-				if (!user) {
-					KarmaModel.create({
-						"teamId": teamId,
-						"userId": userId,
-						"karmaPoints": amnt
-					});
-				} else {
-					user.karmaPoints = user.karmaPoints + amnt;
-					user.save(function (err) {
-						if (err) {
-							console.error('Couldn\'t update karma for ' + userId);
-						}
-					});
-				}
+				user.karmaPoints = user.karmaPoints + amnt;
+				usr = user.save(function (err) {
+					if (err) console.err("Couldn't add points");
+				});
+				return usr ? callback(err, user) : self.create({
+					"teamId": teamId,
+					"userId": userId,
+					"karmaPoints": amnt
+				}, function (err, result) {
+					return callback(err, user);
+				});
 			});
 		}
 	}, {
