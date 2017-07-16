@@ -33,17 +33,20 @@ var KarmaModel = (function () {
 		key: 'addOrCreate',
 		value: function addOrCreate(teamId, userId, amnt) {
 			this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
-				user.karmaPoints = user.karmaPoints + amnt;
-				var usr = user.save(function (err) {
-					if (err) console.err("Couldn't add points");
-				});
-				return usr ? callback(err, user) : self.create({
-					"teamId": teamId,
-					"userId": userId,
-					"karmaPoints": amnt
-				}, function (err, result) {
-					return callback(err, user);
-				});
+				if (user) {
+					user.karmaPoints = user.karmaPoints + amnt;
+					user.save(function (err) {
+						console.err('Couldn\'t add karma to ' + userId);
+					});
+				} else {
+					self.create({
+						"teamId": teamId,
+						"userId": userId,
+						"karmaPoints": karmaPoints
+					}, function (err, usr) {
+						if (err) console.err('Couldn\'t create user ' + userId + ' with points ' + karmaPoints);
+					});
+				}
 			});
 		}
 	}, {

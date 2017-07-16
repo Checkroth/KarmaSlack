@@ -11,22 +11,23 @@ class KarmaModel {
 
 	static addOrCreate(teamId, userId, amnt){
 		this.findOne({teamId, userId}, (err, user) => {
-			user.karmaPoints = user.karmaPoints + amnt;
-			var usr = user.save(function (err) {
-				if (err) console.err("Couldn't add points");
-			});
-			return usr
-				? callback(err, user)
-				: self.create({
+			if (user) {
+				user.karmaPoints = user.karmaPoints + amnt;
+				user.save(function (err) {
+					console.err(`Couldn't add karma to ${userId}`);
+				});
+			}
+			else {
+				self.create({
 					"teamId": teamId,
 					"userId": userId,
-					"karmaPoints": amnt
-				}, (err, result) => {
-					return callback(err, user)
+					"karmaPoints": karmaPoints
+				}, function(err, usr) {
+					if (err) console.err(`Couldn't create user ${userId} with points ${karmaPoints}`)
 				});
-
+			}
 		});
-	} 
+	}
 	static getUserPoints(teamId, userId){
 		return this.findOne({ teamId, userId });
 	}
