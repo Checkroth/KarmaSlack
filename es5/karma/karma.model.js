@@ -32,16 +32,16 @@ var KarmaModel = (function () {
 	_createClass(KarmaModel, null, [{
 		key: 'addOrCreate',
 		value: function addOrCreate(teamId, userId, amnt) {
-			return this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
+			this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
 				if (!user) {
-					return KarmaModel.create({
+					KarmaModel.create({
 						"teamId": teamId,
 						"userId": userId,
 						"karmaPoints": amnt
 					});
 				} else {
 					user.karmaPoints = user.karmaPoints + amnt;
-					return user.save(function (err) {
+					user.save(function (err) {
 						if (err) {
 							console.error('Couldn\'t update karma for ' + userId);
 						}
