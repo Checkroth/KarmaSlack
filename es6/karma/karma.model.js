@@ -12,7 +12,7 @@ class KarmaModel {
 	static addOrCreate(teamId, userId, amnt){
 		return this.findOne( { teamId, userId}, function(err, user) {
 			if(!user) {
-				this.user = KarmaModel.create({
+				return KarmaModel.create({
 					"teamId": teamId,
 					"userId": userId,
 					"karmaPoints": amnt
@@ -20,7 +20,7 @@ class KarmaModel {
 			}
 			else {
 				user.karmaPoints = user.karmaPoints + amnt
-				user.save(function (err) {
+				return user.save(function (err) {
 				if(err) {
 					console.error(`Couldn't update karma for ${userId}`)
 				}
