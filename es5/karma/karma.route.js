@@ -174,7 +174,7 @@ var KarmaRoute = (function () {
 
 				var userId = _coreKarmaregexJs2['default'].userIdPattern.exec(slackData.text)[1];
 
-				_this4._karmaService.remove(slackData.teamId, userId, 1).then(function (data) {
+				_this4._karmaService.remove(slackData.teamId, userId, -1).then(function (data) {
 					_this4._slackService.sendResponse(slackData, data, res);
 				});
 			})['catch'](function (err) {

@@ -28,7 +28,7 @@ var KarmaService = (function () {
 
 			return new Promise(function (res, rej) {
 
-				return _karmaModelJs2["default"].addOrCreate(teamId, userId, amount).then(function () {
+				return _karmaModelJs2["default"].changeOrCreate(teamId, userId, amount).then(function () {
 					return _this.userCount(teamId, userId, "increased").then(function (data) {
 						res(data);
 					})["catch"](function (err) {
@@ -48,23 +48,13 @@ var KarmaService = (function () {
 			var _this2 = this;
 
 			return new Promise(function (res, rej) {
-
-				if (userId === fromUserId) {
-					return fromSelf().then(function (data) {
-						return res(data);
-					});
-				}
-
-				return _karmaModelJs2["default"].removePoints(teamId, userId, amount).then(function (entity) {
-					if (!entity) {
-						return whenNoRecordFound(userId).then(function (data) {
-							return res(data);
-						});
-					}
+				return _karmaModelJs2["default"].changeOrCreate(teamId, userId, amount).then(function () {
 					return _this2.userCount(teamId, userId, "decreased").then(function (data) {
-						return res(data);
+						res(data);
+					})["catch"](function (err) {
+						rej("Error retrieving karma for <@" + userId + ">.");
 					});
-				})["catch"](function () {
+				}, function () {
 					rej("Error removing karma for <@" + userId + ">.");
 				});
 			});

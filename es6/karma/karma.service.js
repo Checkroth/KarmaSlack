@@ -12,7 +12,7 @@ export default class KarmaService {
 		
 		return new Promise((res,rej) =>{
 			
-			return KarmaModel.addOrCreate(teamId, userId, amount)
+			return KarmaModel.changeOrCreate(teamId, userId, amount)
 			.then(() => {
 				return this.userCount(teamId, userId, "increased")
 						.then((data) => {
@@ -31,24 +31,18 @@ export default class KarmaService {
 	remove(teamId, userId, amount){
 		
 		return new Promise((res,rej) =>{
-			
-			if(userId === fromUserId){		
-				return fromSelf()
-						.then((data)=> res(data));
-			}
-			
-			return KarmaModel.removePoints(teamId, userId, amount)	
-			.then((entity) => {
-				if(!entity){
-					return whenNoRecordFound(userId)
-							.then((data)=> res(data));
-				}		
+			return KarmaModel.changeOrCreate(teamId, userId, amount)	
+			.then(() => {
 				return this.userCount(teamId, userId, "decreased")
-						.then((data) => res(data));
-			}).catch(()=>{
-				rej(`Error removing karma for <@${userId}>.`);
+						.then((data) => {
+							res(data);
+						}).catch((err)=>{
+							rej(`Error retrieving karma for <@${userId}>.`);
+						});
+					},() =>{
+							rej(`Error removing karma for <@${userId}>.`);
+				});
 			});
-		});
 		
 		function whenNoRecordFound (userId){
 	  

@@ -9,7 +9,7 @@ var karmaSchema = Mongoose.Schema({
 
 class KarmaModel {
 
-	static addOrCreate(teamId, userId, amnt){
+	static changeOrCreate(teamId, userId, amnt){
 		return this.findOne({teamId, userId}, (err, user) => {
 			if (user) {
 				user.karmaPoints = user.karmaPoints + amnt;
@@ -55,17 +55,6 @@ class KarmaModel {
 			});
 				
 			
-		});
-	}
-	
-	static removePoints(teamId, userId, amnt){
-		return this.findOne({ teamId, userId}, function(err, user) {
-			user.karmaPoints = user.karmaPoints + amnt;
-			user.save(function (err) {
-				if(err) {
-					console.error(`Couldn't update karma for ${userId}`)
-				}
-			});
 		});
 	}
 }

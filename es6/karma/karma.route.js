@@ -151,7 +151,7 @@ export default class KarmaRoute{
 
 			let userId = KarmaRegex.userIdPattern.exec(slackData.text)[1];
 			
-			this._karmaService.remove(slackData.teamId, userId, 1)
+			this._karmaService.remove(slackData.teamId, userId, -1)
 				.then((data)=>{			
 					this._slackService.sendResponse(slackData, data, res);
 				});

@@ -30,8 +30,8 @@ var KarmaModel = (function () {
 	}
 
 	_createClass(KarmaModel, null, [{
-		key: 'addOrCreate',
-		value: function addOrCreate(teamId, userId, amnt) {
+		key: 'changeOrCreate',
+		value: function changeOrCreate(teamId, userId, amnt) {
 			var _this = this;
 
 			return this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
@@ -76,18 +76,6 @@ var KarmaModel = (function () {
 					}
 				}], function (err, collection) {
 					res(collection);
-				});
-			});
-		}
-	}, {
-		key: 'removePoints',
-		value: function removePoints(teamId, userId, amnt) {
-			return this.findOne({ teamId: teamId, userId: userId }, function (err, user) {
-				user.karmaPoints = user.karmaPoints + amnt;
-				user.save(function (err) {
-					if (err) {
-						console.error('Couldn\'t update karma for ' + userId);
-					}
 				});
 			});
 		}
