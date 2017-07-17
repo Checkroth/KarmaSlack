@@ -155,8 +155,9 @@ var KarmaRoute = (function () {
 			this._slackService.authenticate(slackData.teamId, slackData.token).then(function () {
 
 				var userId = _coreKarmaregexJs2['default'].userIdPattern.exec(slackData.text)[1];
+				var count = slackData.text.match(new RegExp('[{+}]+'))[0].length - 1;
 
-				_this3._karmaService.add(slackData.teamId, userId, 1).then(function (data) {
+				_this3._karmaService.add(slackData.teamId, userId, count).then(function (data) {
 					_this3._slackService.sendResponse(slackData, data, res);
 				})['catch'](function (err) {
 					_this3._slackService.sendResponse(slackData, err, res);
@@ -173,8 +174,9 @@ var KarmaRoute = (function () {
 			this._slackService.authenticate(slackData.teamId, slackData.token).then(function () {
 
 				var userId = _coreKarmaregexJs2['default'].userIdPattern.exec(slackData.text)[1];
+				var count = -(slackData.text.match(new RegExp('[{-}]+'))[0].length - 1);
 
-				_this4._karmaService.remove(slackData.teamId, userId, -1).then(function (data) {
+				_this4._karmaService.remove(slackData.teamId, userId, count).then(function (data) {
 					_this4._slackService.sendResponse(slackData, data, res);
 				});
 			})['catch'](function (err) {
