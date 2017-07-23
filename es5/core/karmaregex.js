@@ -58,7 +58,7 @@ var KarmaRegex = (function () {
 	}, {
 		key: "negPattern",
 		get: function get() {
-			return (/((<@)(.*)(> ?)(\-\-))/
+			return (/((@)(.*)(>? ?)(\-\-))/
 			);
 		}
 	}]);

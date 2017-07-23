@@ -29,7 +29,7 @@ class KarmaRegex {
 	}
 	
 	get negPattern() {
-		return /((<@)(.*)(> ?)(\-\-))/;
+		return /((@)(.*)(>? ?)(\-\-))/;
 	}
 }
 
