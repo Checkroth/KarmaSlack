@@ -102,7 +102,7 @@ var KarmaService = (function () {
 
 					var responseText = 'Karma Totals: \n';
 					for (var u in users) {
-						responseText += u + 1 + ": <@" + users[u].userId + " \t " + users[u].karmaPoints + " points \n";
+						responseText += u + 1 + ": <@" + users[u].userId + "> \t " + users[u].karmaPoints + " points \n";
 					}
 
 					res(responseText);
