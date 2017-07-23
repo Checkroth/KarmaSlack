@@ -40,7 +40,7 @@ var KarmaRegex = (function () {
 	}, {
 		key: "userIdSinglePattern",
 		get: function get() {
-			return (/@(.*?)>?$/
+			return (/@([^ ]*?)$/
 			);
 		}
 	}, {
