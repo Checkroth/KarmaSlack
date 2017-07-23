@@ -41,7 +41,7 @@ class KarmaModel {
 			},
 			function(err, users) {
 				if (err) console.err(`Couldn't find users for ${teamId}`);
-				return users
+				res(users)
 			});
 	}
 }
