@@ -11,6 +11,10 @@ class KarmaRegex {
 	get userIdPattern() {
 		return /<@(.*?)>/;
 	}
+
+	get anyIdPattern() {
+		return /@(.*?)>? /;
+	}
 	
 	get userIdSinglePattern() {
 		return /^<@(.*?)>$/;
