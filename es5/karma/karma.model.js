@@ -67,7 +67,9 @@ var KarmaModel = (function () {
 						karmaPoints: -1
 					}
 				}, function (err, users) {
-					if (err) console.err('Couldn\'t find users for ' + teamId);
+					if (err) {
+						console.err('Couldn\'t find users for ' + teamId);
+					}
 					res(users);
 				});
 			});
