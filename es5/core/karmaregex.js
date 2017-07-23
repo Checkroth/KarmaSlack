@@ -52,7 +52,7 @@ var KarmaRegex = (function () {
 	}, {
 		key: "posPattern",
 		get: function get() {
-			return (/((<@)(.*)(> ?)(\+\+))/
+			return (/((@)(.*)(>? ?)(\+\+))/
 			);
 		}
 	}, {
