@@ -39,7 +39,7 @@ class KarmaModel {
 					karmaPoints: -1
 				}
 			},
-			function(err, users) {
+			function(err) {
 				if (err) console.err(`Couldn't find users for ${teamId}`)
 			});
 	}
