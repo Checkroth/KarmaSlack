@@ -82,12 +82,12 @@ export default class KarmaService {
 		return new Promise((res,rej) =>{
 			KarmaModel.getTeamPoints(teamId)
 			.then((collection) => {
+				var responseText = 'Karma Totals: \n';
 
 				for(var u in collection) {
 					responseText += `<@${u.userId}: ${u.karmaPoints} \n`
 				}
 				
-				var responseText = 'Karma Totals: \n';
 				res(responseText);
 			}).catch(()=>{
 				rej('Error retrieving karma for team.');
