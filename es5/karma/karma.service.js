@@ -98,12 +98,11 @@ var KarmaService = (function () {
 		value: function teamCount(teamId) {
 
 			return new Promise(function (res, rej) {
-				_karmaModelJs2["default"].getTeamPoints(teamId).then(function (collection) {
+				_karmaModelJs2["default"].getTeamPoints(teamId).then(function (users) {
 
 					var responseText = 'Karma Totals: \n';
-					for (var u in collection) {
-						responseText += u + "\n";
-						// responseText += `<@${u.userId}: ${u.karmaPoints} \n`
+					for (var u in users) {
+						responseText += u + 1 + ": <@" + users[u].userId + " \t " + users[u].karmaPoints + " points \n";
 					}
 
 					res(responseText);
