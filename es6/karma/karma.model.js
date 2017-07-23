@@ -33,16 +33,18 @@ class KarmaModel {
 	}
 	
 	static getTeamPoints(teamId){
-		return this.find({ teamId },
-			{
-				sort: {
-					karmaPoints: -1
-				}
-			},
-			function(err, users) {
-				// if (err) console.err(`Couldn't find users for ${teamId}`);
-				res(users)
-			});
+		return new Promise((res, rej) => {
+			this.find({ teamId },
+				{
+					sort: {
+						karmaPoints: -1
+					}
+				},
+				function(err, users) {
+					if (err) console.err(`Couldn't find users for ${teamId}`);
+					res(users)
+				});
+		});
 	}
 }
 
