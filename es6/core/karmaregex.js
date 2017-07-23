@@ -17,7 +17,7 @@ class KarmaRegex {
 	}
 	
 	get userIdSinglePattern() {
-		return /@([^ ]*?)$/;
+		return /^<@(.*?)>$/;
 	}
 	
 	get teamIdPattern() {

@@ -71,7 +71,7 @@ export default class KarmaRoute{
 			
 			//User Total
 			
-			else if(KarmaRegex.userIdSinglePattern.test(slackData.text)){
+			else if(KarmaRegex.anyIdPattern.test(slackData.text)){
 				this._userTotalCommand(slackData, res);
 			}
 			

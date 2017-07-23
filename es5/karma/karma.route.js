@@ -91,7 +91,7 @@ var KarmaRoute = (function () {
 
 							//User Total
 
-							else if (_coreKarmaregexJs2['default'].userIdSinglePattern.test(slackData.text)) {
+							else if (_coreKarmaregexJs2['default'].anyIdPattern.test(slackData.text)) {
 									_this._userTotalCommand(slackData, res);
 								}
 
