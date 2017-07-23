@@ -38,6 +38,12 @@ var KarmaRegex = (function () {
 			);
 		}
 	}, {
+		key: "anyIdSinglePattern",
+		get: function get() {
+			return (/@(.*>)>?/
+			);
+		}
+	}, {
 		key: "userIdSinglePattern",
 		get: function get() {
 			return (/^<@(.*?)>$/

@@ -166,7 +166,7 @@ export default class KarmaRoute{
 	_userTotalCommand(slackData, res){
 		this._slackService.authenticate(slackData.teamId, slackData.token).then(()=>{
 			
-			let userId = KarmaRegex.anyIdPattern.exec(slackData.text)[1];
+			let userId = KarmaRegex.anyIdSinglePattern.exec(slackData.text)[1];
 			
 			this._karmaService.userCount(slackData.teamId, userId)
 				.then((data)=>{			

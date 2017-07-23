@@ -190,7 +190,7 @@ var KarmaRoute = (function () {
 
 			this._slackService.authenticate(slackData.teamId, slackData.token).then(function () {
 
-				var userId = _coreKarmaregexJs2['default'].anyIdPattern.exec(slackData.text)[1];
+				var userId = _coreKarmaregexJs2['default'].anyIdSinglePattern.exec(slackData.text)[1];
 
 				_this5._karmaService.userCount(slackData.teamId, userId).then(function (data) {
 					_this5._slackService.sendResponse(slackData, data, res);
