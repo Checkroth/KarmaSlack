@@ -52,7 +52,7 @@ var KarmaRegex = (function () {
 	}, {
 		key: "teamIdPattern",
 		get: function get() {
-			return (/<!everyone>/
+			return (/!all/
 			);
 		}
 	}, {

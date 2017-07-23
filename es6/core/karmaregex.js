@@ -25,7 +25,7 @@ class KarmaRegex {
 	}
 	
 	get teamIdPattern() {
-		return /<!everyone>/;
+		return /!all/;
 	}
 	
 	get posPattern() {
