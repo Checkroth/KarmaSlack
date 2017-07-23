@@ -59,25 +59,29 @@ var KarmaModel = (function () {
 	}, {
 		key: 'getTeamPoints',
 		value: function getTeamPoints(teamId) {
-			var _this2 = this;
+			return this.find({ teamId: teamId });
 
-			return new Promise(function (res, rej) {
+			// return new Promise((res,rej) =>{
 
-				_this2.aggregate([{
-					$match: { teamId: teamId }
-				}, {
-					$group: {
-						_id: '$userId',
-						count: '$karmaPoints'
-					}
-				}, {
-					"$sort": {
-						"count": -1
-					}
-				}], function (err, collection) {
-					res(collection);
-				});
-			});
+			// 	this.aggregate([
+			// // 	    {
+			// 			$match: {teamId}
+			// 		},{
+			// 		    $group : {
+			// 				_id: '$userId',
+			// 				count: '$karmaPoints'
+			// 		    }
+			// 		},
+			// 		{
+			// 			"$sort": {
+			// 				"count": -1
+			// 			}
+			// 		},
+			// 	], function(err, collection){
+			// 		res(collection);
+			// 	});
+
+			// });
 		}
 	}]);
 

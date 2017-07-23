@@ -33,29 +33,30 @@ class KarmaModel {
 	}
 	
 	static getTeamPoints(teamId){
+		return this.find({ teamId });
 		
-		return new Promise((res,rej) =>{
+		// return new Promise((res,rej) =>{
 			
-			this.aggregate([
-			    {
-					$match: {teamId}
-				},{
-				    $group : {
-						_id: '$userId',
-						count: '$karmaPoints'
-				    }
-				},
-				{ 
-					"$sort": { 
-						"count": -1 
-					} 
-				},
-			], function(err, collection){
-				res(collection);
-			});
+		// 	this.aggregate([
+		// // 	    {
+		// 			$match: {teamId}
+		// 		},{
+		// 		    $group : {
+		// 				_id: '$userId',
+		// 				count: '$karmaPoints'
+		// 		    }
+		// 		},
+		// 		{ 
+		// 			"$sort": { 
+		// 				"count": -1 
+		// 			} 
+		// 		},
+		// 	], function(err, collection){
+		// 		res(collection);
+		// 	});
 				
 			
-		});
+		// });
 	}
 }
 

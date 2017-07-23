@@ -100,12 +100,11 @@ var KarmaService = (function () {
 			return new Promise(function (res, rej) {
 				_karmaModelJs2["default"].getTeamPoints(teamId).then(function (collection) {
 
-					var responseText = 'Karma Totals: \n';
-
-					for (var user = 0, len = collection.length; user < len; user++) {
-						var element = collection[user];
-						responseText += user + 1 + ". <@" + element._id + "> has a karma of " + element.count + ". \n";
+					for (var u in collection) {
+						responseText += "<@" + u.userId + ": " + u.karmaPoints + " \n";
 					}
+
+					var responseText = 'Karma Totals: \n';
 					res(responseText);
 				})["catch"](function () {
 					rej('Error retrieving karma for team.');
