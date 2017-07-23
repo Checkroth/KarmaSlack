@@ -73,33 +73,33 @@ var KarmaRoute = (function () {
 
 				//Init
 
-				if (_coreKarmaregexJs2['default'].initPattern.test(slackData.text)) {
-					_this._initCommand(slackData, res);
-				}
+				else if (_coreKarmaregexJs2['default'].initPattern.test(slackData.text)) {
+						_this._initCommand(slackData, res);
+					}
 
-				//Positive karma
+					//Positive karma
 
-				if (_coreKarmaregexJs2['default'].posPattern.test(slackData.text)) {
-					_this._posCommand(slackData, res);
-				}
+					else if (_coreKarmaregexJs2['default'].posPattern.test(slackData.text)) {
+							_this._posCommand(slackData, res);
+						}
 
-				//Negative karma
+						//Negative karma
 
-				if (_coreKarmaregexJs2['default'].negPattern.test(slackData.text)) {
-					_this._negCommand(slackData, res);
-				}
+						else if (_coreKarmaregexJs2['default'].negPattern.test(slackData.text)) {
+								_this._negCommand(slackData, res);
+							}
 
-				//User Total
+							//User Total
 
-				if (_coreKarmaregexJs2['default'].userIdSinglePattern.test(slackData.text)) {
-					_this._userTotalCommand(slackData, res);
-				}
+							else if (_coreKarmaregexJs2['default'].userIdSinglePattern.test(slackData.text)) {
+									_this._userTotalCommand(slackData, res);
+								}
 
-				//Team Total
+								//Team Total
 
-				if (_coreKarmaregexJs2['default'].teamIdPattern.test(slackData.text)) {
-					_this._teamTotalCommand(slackData, res);
-				}
+								else if (_coreKarmaregexJs2['default'].teamIdPattern.test(slackData.text)) {
+										_this._teamTotalCommand(slackData, res);
+									}
 			});
 		}
 	}, {

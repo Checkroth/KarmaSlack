@@ -53,31 +53,31 @@ export default class KarmaRoute{
 			
 			//Init
 	
-			if(KarmaRegex.initPattern.test(slackData.text)){				
+			else if(KarmaRegex.initPattern.test(slackData.text)){				
 				this._initCommand(slackData, res);
 			}
 			
 			//Positive karma
 		
-			if(KarmaRegex.posPattern.test(slackData.text)){
+			else if(KarmaRegex.posPattern.test(slackData.text)){
 				this._posCommand(slackData, res);
 			}
 			
 			//Negative karma
 	
-			if(KarmaRegex.negPattern.test(slackData.text)){				
+			else if(KarmaRegex.negPattern.test(slackData.text)){				
 				this._negCommand(slackData, res);
 			}
 			
 			//User Total
 			
-			if(KarmaRegex.userIdSinglePattern.test(slackData.text)){
+			else if(KarmaRegex.userIdSinglePattern.test(slackData.text)){
 				this._userTotalCommand(slackData, res);
 			}
 			
 			//Team Total
 			
-			if(KarmaRegex.teamIdPattern.test(slackData.text)){
+			else if(KarmaRegex.teamIdPattern.test(slackData.text)){
 				this._teamTotalCommand(slackData, res);
 			}
 		});
