@@ -59,12 +59,18 @@ var KarmaModel = (function () {
 	}, {
 		key: 'getTeamPoints',
 		value: function getTeamPoints(teamId) {
-			return this.find({ teamId: teamId }, null, {
-				sort: {
-					'karmaPoints': -1
-				}
-			}, function (err, users) {
-				if (err) console.err('Couldn\'t find users for ' + teamId);
+			var _this2 = this;
+
+			return new Promise(function (res, erj) {
+				_this2.aggregate([{
+					$match: { teamId: teamId }
+				}, {
+					"$sort": {
+						"karmaPoints": -1
+					}
+				}], function (err, users) {
+					res(users);
+				});
 			});
 		}
 	}]);
