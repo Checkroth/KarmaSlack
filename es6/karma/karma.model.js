@@ -37,7 +37,7 @@ class KarmaModel {
 			null,
 			{
 				sort: {
-					karmaPoints: -1
+					'karmaPoints': -1
 				}
 			},
 			function(err, users) {

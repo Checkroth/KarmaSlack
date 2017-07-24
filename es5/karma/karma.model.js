@@ -61,7 +61,7 @@ var KarmaModel = (function () {
 		value: function getTeamPoints(teamId) {
 			return this.find({ teamId: teamId }, null, {
 				sort: {
-					karmaPoints: -1
+					'karmaPoints': -1
 				}
 			}, function (err, users) {
 				if (err) console.err('Couldn\'t find users for ' + teamId);
