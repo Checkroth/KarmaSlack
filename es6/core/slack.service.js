@@ -72,9 +72,9 @@ export default class SlackService {
 				
 					slackRes.webhook({
 						
-					  channel: "#" + slackData.channelName,
-					    username: NAMES[Math.foor(Math.random()*NAMES.length)],
-					  text: message
+					    channel: "#" + slackData.channelName,
+					    username: BOT_NAMES[Math.foor(Math.random()*BOT_NAMES.length)],
+					    text: message
 					}, (err, response) => {
 						
 					  console.log(response);
