@@ -14,7 +14,7 @@ var _slackNode = require('slack-node');
 
 var _slackNode2 = _interopRequireDefault(_slackNode);
 
-var BOT_NAMES = ["kamrmabot", "karmapolice", "karmathot", "karmachameleon", "kakarot"];
+var BOT_NAMES = ["karmabot", "kamrmabot", "karmapolice", "karmathot", "karmachameleon", "kakarot"];
 
 var SlackService = (function () {
 	function SlackService(configService, config) {
