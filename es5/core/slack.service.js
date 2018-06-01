@@ -95,7 +95,7 @@ var SlackService = (function () {
 							slackRes.webhook({
 
 								channel: "#" + slackData.channelName,
-								username: NAMES[Math.foor(Math.random() * NAMES.length)],
+								username: BOT_NAMES[Math.foor(Math.random() * BOT_NAMES.length)],
 								text: message
 							}, function (err, response) {
 
