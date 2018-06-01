@@ -1,5 +1,7 @@
 import Slack from 'slack-node';
 
+var BOT_NAMES = ["kamrmabot", "karmapolice", "karmathot", "karmachameleon", "kakarot"]
+
 export default class SlackService {
 	
 	constructor(configService, config) {
@@ -71,7 +73,7 @@ export default class SlackService {
 					slackRes.webhook({
 						
 					  channel: "#" + slackData.channelName,
-					  username: "karmabot",
+					    username: NAMES[Math.foor(Math.random()*NAMES.length)],
 					  text: message
 					}, (err, response) => {
 						

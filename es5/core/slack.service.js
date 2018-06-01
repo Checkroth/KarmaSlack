@@ -1,18 +1,20 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var _slackNode = require('slack-node');
 
 var _slackNode2 = _interopRequireDefault(_slackNode);
+
+var BOT_NAMES = ["kamrmabot", "karmapolice", "karmathot", "karmachameleon", "kakarot"];
 
 var SlackService = (function () {
 	function SlackService(configService, config) {
@@ -25,7 +27,7 @@ var SlackService = (function () {
 	//Parse json data
 
 	_createClass(SlackService, [{
-		key: 'parseJson',
+		key: "parseJson",
 		value: function parseJson(str) {
 
 			return new Promise(function (res, rej) {
@@ -42,7 +44,7 @@ var SlackService = (function () {
 		//Authenticate request
 
 	}, {
-		key: 'authenticate',
+		key: "authenticate",
 		value: function authenticate(teamId, token) {
 			var _this = this;
 
@@ -59,7 +61,7 @@ var SlackService = (function () {
 					}
 
 					res();
-				})['catch'](function (err) {
+				})["catch"](function (err) {
 
 					rej(err);
 				});
@@ -69,18 +71,18 @@ var SlackService = (function () {
 		//Send slack response
 
 	}, {
-		key: 'sendResponse',
+		key: "sendResponse",
 		value: function sendResponse(slackData, message, res) {
 			var _this2 = this;
 
 			if (!message) {
-				message = 'Invalid Command. For help see; ' + slackData.triggerWord + ': ?';
+				message = "Invalid Command. For help see; " + slackData.triggerWord + ": ?";
 			}
 
 			if (this._config.productionEnv) {
 				(function () {
 
-					var slackRes = new _slackNode2['default']();
+					var slackRes = new _slackNode2["default"]();
 
 					_this2._configService.getConfig(slackData.teamId).then(function (data) {
 
@@ -93,7 +95,7 @@ var SlackService = (function () {
 							slackRes.webhook({
 
 								channel: "#" + slackData.channelName,
-								username: "karmabot",
+								username: NAMES[Math.foor(Math.random() * NAMES.length)],
 								text: message
 							}, function (err, response) {
 
@@ -112,6 +114,6 @@ var SlackService = (function () {
 	return SlackService;
 })();
 
-exports['default'] = SlackService;
-module.exports = exports['default'];
+exports["default"] = SlackService;
+module.exports = exports["default"];
 //# sourceMappingURL=slack.service.js.map
