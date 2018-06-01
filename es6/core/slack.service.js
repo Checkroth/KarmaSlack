@@ -1,6 +1,6 @@
 import Slack from 'slack-node';
 
-var BOT_NAMES = ["kamrmabot", "karmapolice", "karmathot", "karmachameleon", "kakarot"]
+let BOT_NAMES = ["kamrmabot", "karmapolice", "karmathot", "karmachameleon", "kakarot"]
 
 export default class SlackService {
 	
